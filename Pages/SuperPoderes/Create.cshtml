@@ -1,0 +1,98 @@
+@page
+@model HeroesWeb.Pages_SuperPoderes.CreateModel
+
+@{
+    ViewData["Title"] = "Registrar superpoder";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-7 col-md-9">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-dark text-white py-3">
+                    <h2 class="mb-0">Registrar superpoder</h2>
+                    <small>Agrega un nuevo superpoder al sistema</small>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="alert alert-danger"
+                             role="alert"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="SuperPoderes.Nombre"
+                                   class="form-label fw-semibold">
+                            </label>
+
+                            <input asp-for="SuperPoderes.Nombre"
+                                   class="form-control"
+                                   placeholder="Ej. Super fuerza" />
+
+                            <span asp-validation-for="SuperPoderes.Nombre"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="SuperPoderes.Descripcion"
+                                   class="form-label fw-semibold">
+                            </label>
+
+                            <input asp-for="SuperPoderes.Descripcion"
+                                   class="form-control"
+                                   placeholder="Describe el superpoder" />
+
+                            <span asp-validation-for="SuperPoderes.Descripcion"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="SuperPoderes.HeroeId"
+                                   class="form-label fw-semibold">
+                            </label>
+
+                            <select asp-for="SuperPoderes.HeroeId"
+                                    class="form-select"
+                                    asp-items="ViewBag.HeroeId">
+                                <option value="">
+                                    -- Seleccione un héroe --
+                                </option>
+                            </select>
+
+                            <span asp-validation-for="SuperPoderes.HeroeId"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Registrar superpoder
+                            </button>
+
+                            <a asp-page="Index"
+                               class="btn btn-outline-secondary">
+                                Cancelar
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

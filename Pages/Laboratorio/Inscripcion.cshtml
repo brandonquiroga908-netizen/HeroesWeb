@@ -1,0 +1,184 @@
+﻿@page
+@model HeroesWeb.Pages.Laboratorio.InscripcionModel
+
+@{
+    ViewData["Title"] = "Inscripción a una misión";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-header bg-dark text-white py-3">
+                    <h2 class="mb-0">Inscripción a una misión</h2>
+                    <small>Registra a un héroe para una misión</small>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <p class="text-muted mb-4">
+                        Complete los datos del héroe. Esta actividad no guarda registros.
+                    </p>
+
+                    @if (Model.Confirmacion is not null)
+                    {
+                        <div class="alert alert-success" role="status">
+                            <strong>Inscripción válida</strong><br />
+                            @Model.Confirmacion
+                        </div>
+                    }
+
+                    <form method="post"
+                          asp-page="/Laboratorio/Inscripcion"
+                          asp-page-handler="Inscribir">
+
+                        <div asp-validation-summary="All"
+                             class="alert alert-danger"
+                             role="alert"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="Inscripcion.Nombre"
+                                   class="form-label fw-semibold">
+                            </label>
+
+                            <input asp-for="Inscripcion.Nombre"
+                                   class="form-control"
+                                   placeholder="Ej. Flash" />
+
+                            <span asp-validation-for="Inscripcion.Nombre"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Inscripcion.Email"
+                                   class="form-label fw-semibold">
+                            </label>
+
+                            <input asp-for="Inscripcion.Email"
+                                   class="form-control"
+                                   placeholder="Ej. flash@example.com" />
+
+                            <span asp-validation-for="Inscripcion.Email"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Inscripcion.Ciudad"
+                                   class="form-label fw-semibold">
+                            </label>
+
+                            <select asp-for="Inscripcion.Ciudad"
+                                    asp-items="Model.Ciudades"
+                                    class="form-select">
+                                <option value="">
+                                    -- Seleccione una ciudad --
+                                </option>
+                            </select>
+
+                            <span asp-validation-for="Inscripcion.Ciudad"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Inscripcion.MisionId"
+                                   class="form-label fw-semibold">
+                            </label>
+
+                            <select asp-for="Inscripcion.MisionId"
+                                    asp-items="Model.Misiones"
+                                    class="form-select">
+                                <option value="">
+                                    -- Seleccione una misión --
+                                </option>
+                            </select>
+
+                            <span asp-validation-for="Inscripcion.MisionId"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Inscripcion.Integrantes"
+                                   class="form-label fw-semibold">
+                            </label>
+
+                            <input asp-for="Inscripcion.Integrantes"
+                                   class="form-control"
+                                   type="number"
+                                   min="1"
+                                   max="10"
+                                   placeholder="Entre 1 y 10" />
+
+                            <span asp-validation-for="Inscripcion.Integrantes"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Inscripcion.Observaciones"
+                                   class="form-label fw-semibold">
+                            </label>
+
+                            <textarea asp-for="Inscripcion.Observaciones"
+                                      rows="3"
+                                      class="form-control"
+                                      placeholder="Observaciones adicionales">
+                            </textarea>
+
+                            <span asp-validation-for="Inscripcion.Observaciones"
+                                  class="text-danger">
+                            </span>
+                        </div>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Validar inscripción
+                            </button>
+
+                            <a asp-page="/Laboratorio/Inscripcion"
+                               class="btn btn-outline-secondary">
+                                Nueva inscripción
+                            </a>
+
+                            <a asp-page="/Index"
+                               class="btn btn-secondary">
+                                Volver al inicio
+                            </a>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 mt-4">
+
+                <div class="card-body">
+                    <h5 class="card-title">Inscripción rápida</h5>
+
+                    <p class="text-muted">
+                        Selecciona directamente la misión que deseas preparar.
+                    </p>
+
+                    <a asp-page="/Laboratorio/Inscripcion"
+                       asp-route-misionId="1"
+                       class="btn btn-outline-primary">
+                        Preparar inscripción a Rescate de civiles
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

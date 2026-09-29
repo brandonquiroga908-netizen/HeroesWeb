@@ -1,0 +1,278 @@
+:root {
+    --azul: #4f8fc0;
+    --azul-oscuro: #34495e;
+    --azul-suave: #d9ebf7;
+    --azul-claro: #eaf5fc;
+    --azul-menta: #b9dff2;
+    --gris: #d5dce2;
+    --texto: #243746;
+    --texto-suave: #647789;
+}
+
+/* =========================
+   GENERAL
+   ========================= */
+
+body {
+    background: linear-gradient( 135deg, rgba(79, 143, 192, 0.12), rgba(217, 235, 247, 0.25) );
+    color: var(--texto);
+    font-family: "Nunito Sans", "Segoe UI", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    color: var(--texto);
+}
+
+/* =========================
+   NAVBAR
+   ========================= */
+
+.navbar {
+    background-color: #fff !important;
+    border-bottom: 1px solid var(--gris) !important;
+}
+
+    .navbar .nav-link {
+        font-weight: 600;
+        color: var(--texto-suave) !important;
+        border-radius: 999px;
+        padding: 0.4rem 0.9rem !important;
+    }
+
+        .navbar .nav-link:hover {
+            background-color: var(--azul-suave);
+            color: var(--texto) !important;
+        }
+
+.navbar-brand {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 700;
+    color: var(--texto) !important;
+}
+
+/* =========================
+   BOTONES
+   ========================= */
+
+.btn-primary {
+    background-color: var(--azul) !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 14px;
+    font-weight: 600;
+}
+
+    .btn-primary:hover {
+        background-color: #3d789f !important;
+        color: #fff !important;
+    }
+
+.btn-secondary {
+    background-color: var(--azul-oscuro) !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+    .btn-secondary:hover {
+        background-color: #263746 !important;
+    }
+
+.btn-warning,
+a.btn-outline-secondary {
+    background-color: var(--azul-suave) !important;
+    border: none !important;
+    color: var(--texto) !important;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+    .btn-warning:hover,
+    a.btn-outline-secondary:hover {
+        background-color: var(--azul-menta) !important;
+        color: var(--texto) !important;
+    }
+
+.btn-danger {
+    background-color: var(--azul-oscuro) !important;
+    border: none !important;
+    color: #fff !important;
+    border-radius: 10px;
+    font-weight: 600;
+}
+
+    .btn-danger:hover {
+        background-color: #263746 !important;
+    }
+
+/* =========================
+   TARJETAS
+   ========================= */
+
+.card {
+    border: 1px solid var(--gris) !important;
+    border-radius: 18px !important;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.96);
+}
+
+.card-header {
+    border: none !important;
+}
+
+    .card-header.bg-dark {
+        background-color: var(--azul-oscuro) !important;
+        color: #fff !important;
+    }
+
+    .card-header.bg-primary {
+        background-color: var(--azul) !important;
+        color: #fff !important;
+    }
+
+    .card-header.bg-danger {
+        background-color: #5d7890 !important;
+        color: #fff !important;
+    }
+
+/* =========================
+   TABLAS
+   ========================= */
+
+.table {
+    color: var(--texto);
+}
+
+    .table thead th {
+        background-color: var(--azul) !important;
+        color: #fff !important;
+        border: none;
+        padding: 14px 16px;
+    }
+
+    .table tbody tr:nth-child(even) {
+        background-color: rgba(217, 235, 247, 0.45);
+    }
+
+    .table tbody tr:nth-child(odd) {
+        background-color: rgba(234, 245, 252, 0.5);
+    }
+
+    .table tbody tr:hover {
+        background-color: rgba(79, 143, 192, 0.15);
+    }
+
+/* =========================
+   FORMULARIOS
+   ========================= */
+
+.form-control,
+.form-select {
+    border: 1.5px solid var(--gris);
+    border-radius: 12px;
+    color: var(--texto);
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        border-color: var(--azul);
+        box-shadow: 0 0 0 3px rgba(79, 143, 192, 0.25);
+    }
+
+.form-label {
+    color: var(--texto);
+}
+
+/* =========================
+   ALERTAS
+   ========================= */
+
+.alert-success {
+    background-color: rgba(185, 223, 242, 0.55);
+    border-color: var(--azul);
+    color: var(--texto);
+}
+
+.alert-warning {
+    background-color: rgba(217, 235, 247, 0.65);
+    border-color: var(--azul-menta);
+    color: var(--texto);
+}
+
+.alert-danger {
+    background-color: rgba(79, 143, 192, 0.15);
+    border-color: var(--azul);
+    color: var(--texto);
+}
+
+/* =========================
+   ENLACES
+   ========================= */
+
+a {
+    color: var(--azul);
+}
+
+    a:hover {
+        color: #3d789f;
+    }
+
+/* =========================
+   ENLACES DE TABLAS
+   ========================= */
+
+.table td a {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    margin-right: 4px;
+    transition: opacity 0.15s ease;
+}
+
+    .table td a:hover {
+        text-decoration: none;
+        opacity: 0.85;
+    }
+
+    /* Ver */
+    .table td a:nth-of-type(1) {
+        background-color: var(--azul-menta);
+        color: var(--texto);
+    }
+
+    /* Editar */
+    .table td a:nth-of-type(2) {
+        background-color: var(--azul-suave);
+        color: var(--texto);
+    }
+
+    /* Eliminar */
+    .table td a:nth-of-type(3) {
+        background-color: var(--azul-oscuro);
+        color: #fff;
+    }
+
+/* =========================
+   VALIDACIONES
+   ========================= */
+
+.text-danger {
+    color: #55758c !important;
+}
+
+/* =========================
+   FOOTER
+   ========================= */
+
+.footer {
+    color: var(--texto-suave);
+    border-top: 1px solid var(--gris) !important;
+}

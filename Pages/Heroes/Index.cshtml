@@ -1,0 +1,121 @@
+@page
+@model HeroesWeb.Pages_Heroes.IndexModel
+
+@{
+    ViewData["Title"] = "Héroes";
+}
+
+<div class="container py-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1 class="mb-1">Héroes</h1>
+            <p class="text-muted mb-0">
+                Gestiona los héroes registrados en el sistema.
+            </p>
+        </div>
+
+        <a asp-page="Create" class="btn btn-primary">
+            + Registrar héroe
+        </a>
+    </div>
+
+    <div class="card shadow-sm border-0">
+
+        <div class="card-header bg-dark text-white py-3">
+            <h5 class="mb-0">Lista de héroes</h5>
+        </div>
+
+        <div class="card-body p-0">
+
+            @if (Model.Heroes.Count == 0)
+            {
+                <div class="text-center py-5">
+                    <h5>No hay héroes registrados</h5>
+                    <p class="text-muted">
+                        Registra un héroe para comenzar.
+                    </p>
+
+                    <a asp-page="Create" class="btn btn-primary">
+                        Registrar héroe
+                    </a>
+                </div>
+            }
+            else
+            {
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle mb-0">
+
+                        <thead class="table-light">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Heroes[0].Nombre)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Heroes[0].Ciudad)
+                                </th>
+
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Heroes[0].IdentidadSecreta)
+                                </th>
+
+                                <th class="text-center">
+                                    Acciones
+                                </th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var item in Model.Heroes)
+                            {
+                                <tr>
+                                    <td class="fw-semibold">
+                                        @Html.DisplayFor(modelItem => item.Nombre)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Ciudad)
+                                    </td>
+
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.IdentidadSecreta)
+                                    </td>
+
+                                    <td class="text-center">
+                                        <div class="d-flex justify-content-center gap-2">
+
+                                            <a asp-page="./Details"
+                                               asp-route-id="@item.Id"
+                                               class="btn btn-sm btn-outline-secondary">
+                                                Ver
+                                            </a>
+
+                                            <a asp-page="./Edit"
+                                               asp-route-id="@item.Id"
+                                               class="btn btn-sm btn-outline-primary">
+                                                Editar
+                                            </a>
+
+                                            <a asp-page="./Delete"
+                                               asp-route-id="@item.Id"
+                                               class="btn btn-sm btn-outline-danger">
+                                                Eliminar
+                                            </a>
+
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+
+                    </table>
+
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>
